@@ -1,0 +1,69 @@
+---
+# playbook made by Arnaud Crampet 
+#- name: "clear SSH keys"
+#  command: "echo # > /etc/ssh/ssh_known_hosts"
+
+#- name: "Get SSH keys"
+#  command: "ssh-keyscan -H ${servers} >> /etc/ssh/ssh_known_hosts"
+#  with_items: "{{ groups['all'] }}"
+
+- include: prelim.yml
+  become: true
+  tags:
+      - prelim_tasks
+      - always
+
+
+- include: FS_HOME.yml
+  become: true
+  tags:
+      - fs_tasks
+      - always
+
+- include: FS_VAR.yml
+  become: true
+  tags:
+      - fs_tasks
+      - always
+
+- include: FS_LOG.yml
+  become: true
+  tags:
+      - fs_tasks
+      - always
+
+- include: FS_TMP.yml
+  become: true
+  tags:
+      - fs_tasks
+      - always
+
+- include: FS_CERTIFICATE.yml
+  become: true
+  tags:
+      - fs_tasks
+      - always
+
+- include: FS_CONFIG.yml
+  become: true
+  tags:
+      - fs_tasks
+      - always
+
+- include: FS_DATA.yml
+  become: true
+  tags:
+      - fs_tasks
+      - always
+
+- include: FS_DATABASE.yml
+  become: true
+  tags:
+      - fs_tasks
+      - always
+
+- include: FS_DOCKER.yml
+  become: true
+  tags:
+      - fs_tasks
+      - always 

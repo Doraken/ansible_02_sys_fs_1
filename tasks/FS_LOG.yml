@@ -1,0 +1,27 @@
+- name: "system_02_file_system | Creating {{ LV_LOG }} volume"
+  lvol:
+      vg:  "{{ VG_Name }}" 
+      lv:  "{{ LV_LOG }}"
+      size: "{{ LV_LOG_SIZE }}"
+      force: yes
+
+- name: "system_02_file_system | format {{ LV_LOG }} with the xfs filesystem"
+  filesystem:
+      fstype: "xfs"
+      dev: "/dev/{{ VG_Name }}/{{ LV_LOG }}"
+
+- name: "system_02_file_system | create temporary mount point {{ LV_LOG_MNT }}.old to {{ LV_LOG_MNT }}" 
+  file:
+      path: "/mnt/log"
+      state: "directory"
+      mode: '0755'
+
+- name: "system_02_file_system | mount the lv {{ LV_LOG }} on {{ LV_LOG_MNT }}"
+  mount:
+      path: "{{ LV_LOG_MNT }}"
+      src: "/mnt/log"
+      fstype: "xfs"
+      state: "mounted"
+
+- name: "system_02_file_system | copy originale data from {{ LV_LOG_MNT }} /mnt/log" 
+  command: "cp -rp  {{ LV_LOG_MNT }}/*  /mnt/log/ "

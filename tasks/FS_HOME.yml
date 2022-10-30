@@ -1,0 +1,28 @@
+- name: "system_02_file_system | Creating {{ LV_HOME }} volume"
+  lvol:
+      vg:  "{{ VG_Name }}" 
+      lv:  "{{ LV_HOME }}"
+      size: "{{ LV_HOME_SIZE }}"
+      force: yes
+
+- name: "system_02_file_system | format {{ LV_HOME }} with the xfs filesystem"
+  filesystem:
+      fstype: xfs
+      dev: "/dev/{{ VG_Name }}/{{ LV_HOME }}"
+
+- name: "system_02_file_system | create mount temporary mount point /mnt/home" 
+  file:
+      path: "/mnt/home"
+      state: "directory"
+      mode: '0755'
+
+- name: "system_02_file_system | mount the lv {{ LV_HOME }} on {{ LV_HOME_MNT }}"
+  mount:
+      path: "/mnt/home"
+      src: "/dev/{{ VG_Name }}/{{ LV_HOME }}"
+      fstype: "xfs"
+      state: "mounted"
+
+- name: "system_02_file_system | copy originale data from {{ LV_HOME_MNT }} to /mnt/home" 
+  command: "cp -Rp {{ LV_HOME_MNT }}/* /mnt/home/"
+

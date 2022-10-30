@@ -1,0 +1,10 @@
+- name: "umount /srv file system"
+  mount:
+    path: /srv
+    state: absent
+
+- name: "umount /srv file system"
+  lvg:
+    vg: VG_DATA_01
+    pvs: /dev/sda4
+    pesize: "16"

@@ -1,0 +1,40 @@
+---
+# playbook made by Arnaud Crampet 
+VG_private: "/dev/sda4"
+VG_Name: "VG_DATA"
+
+LV_LOG: "LV_LOG_01"
+LV_LOG_SIZE: "10g"
+LV_LOG_MNT: "/var/log"
+
+LV_VAR: "LV_VAR_01"
+LV_VAR_SIZE: "10g"
+LV_VAR_MNT: "/var"
+
+LV_TMP: "LV_TMP_01"
+LV_TMP_SIZE: "4g"
+LV_TMP_MNT: "tmp"
+
+LV_HOME: "LV_HOME_01"
+LV_HOME_SIZE: "4g"
+LV_HOME_MNT: "/home"
+
+LV_DATA: "LV_DATA_01"
+LV_DATA_SIZE: "100g"
+LV_DATA_MNT: "/srv/data"
+
+LV_DOCKER: "LV_DOCKER_01"
+LV_DOCKER_SIZE: "100g"
+LV_DOCKER_MNT: "/srv/docker"
+
+LV_DATABASES: "LV_DATABASE_01"
+LV_DATABASES_SIZE: "10g"
+LV_DATABASE_MNT: "/srv/databases"
+
+LV_CONFIG: "LV_CONFIG_01"
+LV_CONFIG_SIZE: "10g"
+LV_CONFIG_MNT: "/srv/config"
+
+LV_CERTIFICATES: "LV_CERTIFICATE_01"
+LV_CERTIFICATES_SIZE: "1g"
+LV_CERTIFICATE_MNT: "/srv/certificate"
