@@ -13,7 +13,6 @@
       - prelim_tasks
       - always
 
-
 - include: FS_HOME.yml
   become: true
   tags:
