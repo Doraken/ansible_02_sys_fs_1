@@ -24,4 +24,4 @@
       state: "mounted"
 
 - name: "system_02_file_system | copy originale data from {{ LV_LOG_MNT }} /mnt/log" 
-  command: "cp -rp  {{ LV_LOG_MNT }}/*  /mnt/log/ "
+  command: "cp -rp  {{ LV_LOG_MNT }}  /mnt "

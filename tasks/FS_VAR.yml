@@ -24,5 +24,5 @@
       state: "mounted"
 
 - name: "system_02_file_system |Move originale {{ LV_VAR_MNT }} to {{ LV_VAR_MNT }}.old" 
-  command: "cp -Rp /var/* /mnt/var/ "
+  command: "cp -Rp /var /mnt/ "
 
