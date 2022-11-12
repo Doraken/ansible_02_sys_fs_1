@@ -10,7 +10,7 @@
       fstype: "xfs"
       dev: "/dev/{{ VG_Name }}/{{ LV_LOG }}"
 
-- name: "system_02_file_system | create temporary mount point {{ LV_LOG_MNT }}.old to {{ LV_LOG_MNT }}" 
+- name: "system_02_file_system | create temporary mount point /mnt/{{ LV_LOG_MNT }} to {{ LV_LOG_MNT }}" 
   file:
       path: "/mnt/log"
       state: "directory"
@@ -18,8 +18,8 @@
 
 - name: "system_02_file_system | mount the lv {{ LV_LOG }} on {{ LV_LOG_MNT }}"
   mount:
-      path: "{{ LV_LOG_MNT }}"
-      src: "/mnt/log"
+      path: "/mnt/log"
+      src: "/dev/{{ VG_Name }}/{{ LV_LOG }}"
       fstype: "xfs"
       state: "mounted"
 
