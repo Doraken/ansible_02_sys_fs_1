@@ -37,4 +37,4 @@ LV_CONFIG_MNT: "/srv/config"
 
 LV_CERTIFICATES: "LV_CERTIFICATE_01"
 LV_CERTIFICATES_SIZE: "1g"
-LV_CERTIFICATE_MNT: "/srv/certificate"
+LV_CERTIFICATES_MNT: "/srv/certificate"
